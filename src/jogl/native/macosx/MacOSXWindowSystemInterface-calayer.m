@@ -878,9 +878,11 @@ NS_ENDHANDLER
 @end
 
 NSOpenGLLayer* createNSOpenGLLayer(NSOpenGLContext* ctx, int gl3ShaderProgramName, NSOpenGLPixelFormat* fmt, NSOpenGLPixelBuffer* p, uint32_t texID, Bool opaque, int texWidth, int texHeight, int winWidth, int winHeight) {
-  return [[[MyNSOpenGLLayer alloc] init] setupWithContext:ctx gl3ShaderProgramName: (GLuint)gl3ShaderProgramName pixelFormat: fmt pbuffer: p texIDArg: (GLuint)texID
+  NSOpenGLLayer *layer = [[[MyNSOpenGLLayer alloc] init] setupWithContext:ctx gl3ShaderProgramName: (GLuint)gl3ShaderProgramName pixelFormat: fmt pbuffer: p texIDArg: (GLuint)texID
                                                               opaque: opaque texWidth: texWidth texHeight: texHeight
                                                               winWidth: winWidth winHeight: winHeight];
+  layer.magnificationFilter  = kCAFilterNearest;
+  return layer;
 }
  
 void setNSOpenGLLayerEnabled(NSOpenGLLayer* layer, Bool enable) {

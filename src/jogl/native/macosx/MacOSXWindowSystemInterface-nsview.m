@@ -116,7 +116,9 @@
 @end
 
 NSOpenGLLayer* createNSOpenGLLayer(NSOpenGLContext* ctx, NSOpenGLPixelFormat* fmt, NSView* view, Bool opaque) {
-  return [[MyNSOpenGLLayer alloc] initWithContext:ctx pixelFormat: fmt view: view opaque: opaque];
+  NSOpenGLLayer* layer = [[MyNSOpenGLLayer alloc] initWithContext:ctx pixelFormat: fmt view: view opaque: opaque];
+  layer.magnificationFilter  = kCAFilterNearest;
+  return layer;
 }
 
 void setNSOpenGLLayerNeedsDisplay(NSOpenGLLayer* layer) {
