@@ -336,7 +336,7 @@ public class GLFBODrawableImpl extends GLDrawableImpl implements GLFBODrawable {
         Throwable tGL = null;
         ourContext.makeCurrent();
         gl.glFinish(); // sync GL command stream
-        fboBound = false; // clear bound-flag immediatly, caused by contextMadeCurrent(..) - otherwise we would swap @ release
+        //fboBound = false; // clear bound-flag immediatly, caused by contextMadeCurrent(..) - otherwise we would swap @ release
         fboSwapped = false;
         try {
             newSamples = newSamples <= maxSamples ? newSamples : maxSamples;
