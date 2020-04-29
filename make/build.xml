@@ -8,7 +8,7 @@
        - Main build target.
       -->
 
-    <target name="all" description="Build nativewindow, jogl and newt projects, incl. all junit tests " depends="init,build.nativewindow,build.jogl,build.newt,build.oculusvr,one.dir,tag.build,developer-zip-archive" />
+    <target name="all" description="Build nativewindow, jogl and newt projects, incl. all junit tests " depends="init,build.nativewindow,build.jogl,build.newt,one.dir,tag.build,developer-zip-archive" />
 
     <target name="all.debug" description="Debug build nativewindow, jogl and newt projects, incl. all junit tests " depends="init.debug,build.nativewindow,build.jogl,build.newt,build.oculusvr,one.dir,tag.build,test.compile,developer-zip-archive" />
 
