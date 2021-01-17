@@ -173,6 +173,7 @@
             <istrue value="${isOSX}" />
             <or>
               <os arch="AMD64" />
+              <os arch="aarch64" />
               <os arch="x86_64" />
             </or>                
           </and>
