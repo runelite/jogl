@@ -91,10 +91,11 @@
                   value="com/jogamp/gluegen/runtime/opengl/*"/>
 
         <property name="java.part.core.util"
-                  value="com/jogamp/opengl/util/* jogamp/opengl/util/* com/jogamp/opengl/util/glsl/* jogamp/opengl/util/glsl/* jogamp/opengl/shader/**"/>
+                  value="com/jogamp/opengl/util/GLBuffers.* com/jogamp/opengl/util/PMVMatrix.* com/jogamp/opengl/util/glsl/* jogamp/opengl/shader/**"/>
 
-        <property name="java.part.core" 
+        <property name="java.part.core"
                   value="${java.part.gluegen-gl-rt} com/jogamp/opengl/* com/jogamp/opengl/fixedfunc/* com/jogamp/opengl/math/** jogamp/opengl/* ${java.part.core.util}"/>
+
         <property name="java.part.core.exclude" value="com/jogamp/opengl/Debug* com/jogamp/opengl/Trace* com/jogamp/opengl/util/AWTAnimatorImpl* com/jogamp/opengl/util/PNG*"/>
 
         <property name="java.part.nv-cg"
@@ -152,16 +153,16 @@
                   value="com/jogamp/opengl/TraceGLES2.* com/jogamp/opengl/DebugGLES2.* com/jogamp/opengl/TraceGLES3.* com/jogamp/opengl/DebugGLES3.*"/>
 
         <property name="java.part.awt"
-                  value="com/jogamp/opengl/awt/** jogamp/opengl/**/awt/** com/jogamp/opengl/util/AWTAnimatorImpl*"/>
+                  value="com/jogamp/opengl/awt/** jogamp/opengl/**/awt/**"/>
         
         <property name="java.part.swt"
                   value="com/jogamp/opengl/**/swt/**"/>
 
         <property name="java.part.util"
-                  value="com/jogamp/opengl/util/texture/** com/jogamp/opengl/util/av/* com/jogamp/opengl/util/packrect/** com/jogamp/opengl/util/PNG* com/jogamp/opengl/util/stereo/** jogamp/opengl/util/av/** jogamp/opengl/util/jpeg/** jogamp/opengl/util/pngj/** jogamp/opengl/util/stereo/**"/>
+                  value="com/jogamp/opengl/util/texture/** com/jogamp/opengl/util/av/* com/jogamp/opengl/util/packrect/** com/jogamp/opengl/util/PNG* com/jogamp/opengl/util/stereo/** jogamp/opengl/util/av/** jogamp/opengl/util/jpeg/** jogamp/opengl/util/pngj/** jogamp/opengl/util/stereo/** jogamp/opengl/util/glsl/* jogamp/opengl/util/* com/jogamp/opengl/util/*"/>
 
         <property name="java.part.util.awt"
-                  value="com/jogamp/opengl/util/**/awt/**"/>
+                  value="com/jogamp/opengl/util/**/awt/** com/jogamp/opengl/util/AWTAnimatorImpl*"/>
 
         <property name="java.part.util.gldesktop"
                   value="com/jogamp/opengl/util/**/gl2/**"/>

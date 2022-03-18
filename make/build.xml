@@ -146,6 +146,18 @@
         </jar>
     </target>
 
+    <!-- runelite jar -->
+    <target name="one.jar.dir.rl" unless="setup.noAWT">
+        <jar manifest="${build}/manifest-all.mf" destfile="${jogl-rl.jar}" filesonly="true" excludes="META-INF/*">
+            <archives>
+                <zips>
+                    <path refid="nativewindow_rl.classpath"/>
+                    <path refid="jogl_rl.classpath"/>
+                </zips>
+            </archives>
+        </jar>
+    </target>
+
     <target name="one.jar.dir.awt" unless="setup.noAWT">
         <jar manifest="${build}/manifest-all.mf" destfile="${jogl-all.jar}" filesonly="true" excludes="META-INF/*">
             <archives>
@@ -160,6 +172,8 @@
     </target>
     <target name="one.jar.dir" depends="one.jar.dir.prep,one.jar.dir.android" unless="one.dir.skip">
         <antcall target="one.jar.dir.awt" inheritRefs="true" inheritAll="true"/>
+        <!-- runelite jar -->
+        <antcall target="one.jar.dir.rl" inheritRefs="true" inheritAll="true"/>
         <jar manifest="${build}/manifest-all.mf" destfile="${jogl-all-noawt.jar}" filesonly="true" excludes="META-INF/*">
             <archives>
                 <zips>
@@ -190,6 +204,14 @@
         <copy file="${jar}/jogl-all-natives-${os.and.arch}.jar" tofile="${jar}/jogl-all-noawt-natives-${os.and.arch}.jar" />
         <copy file="${jar}/jogl-all-natives-${os.and.arch}.jar" tofile="${jar}/jogl-all-mobile-natives-${os.and.arch}.jar" />
         <copy file="${jar}/jogl-all-natives-${os.and.arch}.jar" tofile="${jar}/jogl-all-android-natives-${os.and.arch}.jar" />
+
+        <!-- runelite natives without mobile and newt -->
+        <native.tag.jar objdir="${lib}"
+                        nativejarfile="${jar}/jogl-rl-natives-${os.and.arch}.jar"
+                        manifestfile="${build}/manifest-all-natives.mf"
+                        module="opengl"
+                        includelibs="${native.library.prefix}jogl_desktop.${native.library.suffix} ${native.library.prefix}nativewindow*.${native.library.suffix}"
+                        />
     </target>
 
     <target name="android.package.jogl.skip.check" depends="init,gluegen.cpptasks.detect.os">

@@ -69,7 +69,7 @@ import com.jogamp.nativewindow.AbstractGraphicsDevice;
 import com.jogamp.nativewindow.NativeSurface;
 import com.jogamp.nativewindow.NativeWindowFactory;
 import com.jogamp.nativewindow.ProxySurface;
-import com.jogamp.nativewindow.egl.EGLGraphicsDevice;
+//import com.jogamp.nativewindow.egl.EGLGraphicsDevice;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2ES2;
 import com.jogamp.opengl.GL2ES3;
@@ -2455,7 +2455,7 @@ public abstract class GLContextImpl extends GLContext {
         if( isDriverNVIDIAGeForce ) {
             // Bug 1200: Crash on GNU/Linux x86_64 'NVidia beta driver 355.06' and 'latest' 440.36 @ probeSurfacelessCtx
             // final VersionNumber nvSafeVersion = new VersionNumber(440, 36, 0); // FIXME: Add safe version
-            if( !isES && !(adevice instanceof EGLGraphicsDevice) /* &&  vendorVersion.compareTo(nvSafeVersion) < 0 */ ) {
+            if( !isES /* && !(adevice instanceof EGLGraphicsDevice) */ /* &&  vendorVersion.compareTo(nvSafeVersion) < 0 */ ) {
                 final int quirk = GLRendererQuirks.NoSurfacelessCtx;
                 if(DEBUG) {
                     System.err.print("Quirk: "+GLRendererQuirks.toString(quirk)+": cause: !ES, !EGL, Vendor " + glVendor +", X11 Renderer " + glRenderer+", Version=[vendor " + vendorVersion + ", GL " + glVersion+"]");

@@ -118,9 +118,9 @@
             </or>
         </condition>
 
-        <condition property="setup.addNativeDRMGBM">
-            <isset property="isLinux"/>
-        </condition>
+<!--        <condition property="setup.addNativeDRMGBM">-->
+<!--            <isset property="isLinux"/>-->
+<!--        </condition>-->
 
         <condition property="setup.addNativeFFmpeg">
             <not>
@@ -302,6 +302,7 @@
         <!-- Atomic JavaSE JARS -->
 
         <property name="nativewindow.jar"        value="${build.nativewindow}/nativewindow.jar" />
+        <property name="nativewindow2.jar"        value="${build.nativewindow}/nativewindow2.jar" />
         <property name="nativewindow-awt.jar"    value="${build.nativewindow}/nativewindow-awt.jar"  />
         <property name="nativewindow-os-drm.jar" value="${build.nativewindow}/nativewindow-os-drm.jar"  />
         <property name="nativewindow-os-x11.jar" value="${build.nativewindow}/nativewindow-os-x11.jar"  />
@@ -309,8 +310,19 @@
         <property name="nativewindow-os-osx.jar" value="${build.nativewindow}/nativewindow-os-osx.jar"  />
         <property name="nativewindow-os-ios.jar" value="${build.nativewindow}/nativewindow-os-ios.jar"  />
 
+        <!-- runelite -->
+        <path id="nativewindow_rl.classpath">
+            <pathelement location="${nativewindow.jar}"/>
+            <pathelement location="${nativewindow-awt.jar}"/>
+            <pathelement location="${nativewindow-os-x11.jar}"/>
+            <pathelement location="${nativewindow-os-win.jar}"/>
+            <pathelement location="${nativewindow-os-osx.jar}"/>
+        </path>
         <path id="nativewindow_all_atoms.classpath">
             <pathelement location="${nativewindow.jar}" />
+            <!-- jogl uses this path as its compile cp, so include the extra classes
+            we pulled out of the main nativewindow jar so eg jogl.egl -> nativewindow.egl works -->
+            <pathelement location="${nativewindow2.jar}" />
             <pathelement location="${nativewindow-awt.jar}" />
             <pathelement location="${nativewindow-os-drm.jar}" />
             <pathelement location="${nativewindow-os-x11.jar}" />
@@ -354,6 +366,15 @@
         <property name="jogl-omx.jar"                 value="${build.jogl}/jogl-omx.jar" />
         <property name="jogl-cg.jar"                  value="${build.jogl}/jogl-cg.jar" />
 
+        <!-- runelite -->
+        <path id="jogl_rl.classpath">
+            <pathelement location="${jogl.jar}"/>
+            <pathelement location="${jogl-awt.jar}"/>
+            <pathelement location="${jogl-os-x11.jar}"/>
+            <pathelement location="${jogl-os-win.jar}"/>
+            <pathelement location="${jogl-os-osx.jar}"/>
+            <pathelement location="${jogl-gldesktop.jar}"/>
+        </path>
         <path id="jogl_all_atoms.classpath">
             <pathelement location="${jogl.jar}" />
             <pathelement location="${jogl-sdk.jar}" />
@@ -496,6 +517,9 @@
 
         <!-- JavaSE combinations . AWT -->
         <property name="jogl-all.jar"                   value="${jar}/jogl-all.jar" />
+
+        <!-- runelite -->
+        <property name="jogl-rl.jar"                   value="${jar}/jogl-rl.jar" />
 
         <!-- JavaSE combinations . NO.AWT -->
         <property name="jogl-all-noawt.jar"             value="${jar}/jogl-all-noawt.jar" />
